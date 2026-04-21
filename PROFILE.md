@@ -1,6 +1,6 @@
-# GhostBoard
+# 999chanz
 
-A 4chan-like anonymous platform with Reddit-style features, built to stay completely anonymous.
+An anonymous forum with Reddit-style depth, 4chan-inspired energy, and Nintendo-inspired retro UI/UX.
 
 ## Core requirements
 
@@ -8,8 +8,9 @@ A 4chan-like anonymous platform with Reddit-style features, built to stay comple
 - Topic boards and threaded discussions
 - Upvote/downvote ranking similar to Reddit hot/new/top sorting
 - Community moderation via anonymous reports and board-level rules
-- 8-bit visual style, pixel-art animations, and retro sound effects for key interactions
+- Nintendo-inspired 8-bit visual style, pixel-art animations, and satisfying retro sound effects
 - Privacy-first design: minimal metadata retention and no public identity graph
+- Rich anonymous media posting (images, videos, and memes)
 
 ## MVP feature set
 
@@ -17,7 +18,8 @@ A 4chan-like anonymous platform with Reddit-style features, built to stay comple
 2. Start threads and reply anonymously
 3. Vote on threads and comments
 4. Filter by hot/new/top
-5. Play optional 8-bit animations and sounds in the UI settings
+5. Post images, videos, and memes in threads/comments
+6. Play optional 8-bit animations and pixel SFX in the UI settings
 
 ## Product principles
 

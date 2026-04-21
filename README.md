@@ -1,13 +1,20 @@
-# GhostBoard
+# 999chanz
 
-GhostBoard is an anonymous discussion platform concept inspired by 4chan-style posting with Reddit-like discovery.
+999chanz is an anonymous forum concept with Reddit-like features, a 4chan-style culture and layout, and a Nintendo-inspired retro UI/UX.
 
 ## Repository instructions
 
 - Product requirements are documented in `PROFILE.md`.
-- This repository currently contains planning/docs content and GitHub Skills workflow files.
-- There is no Expo app scaffold in this repository yet (no `package.json`, `app.json`, or React Native source), so a native Expo build cannot run at this stage.
+- This repository contains planning/docs content, GitHub Skills workflow files, and an Expo app scaffold in `/app`.
 
-## Next step to enable native Expo build
+## App scaffold status
 
-Initialize an Expo app in this repository first, then run native build commands.
+An Expo app scaffold now exists in `/app` with a starter Game Boy/Nintendo-inspired UI theme.
+
+## Run the app
+
+```bash
+cd app
+npm install
+npm run web
+```
