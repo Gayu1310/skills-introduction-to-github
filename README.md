@@ -1,13 +1,13 @@
-# Welcome, Gayu1310!
+# GhostBoard
 
-<img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
+GhostBoard is an anonymous discussion platform concept inspired by 4chan-style posting with Reddit-like discovery.
 
-Mona here. I'm done preparing your exercise and excited to have you here! 💚
+## Repository instructions
 
-[![](https://img.shields.io/badge/Go%20to%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/Gayu1310/skills-introduction-to-github/issues/2)
+- Product requirements are documented in `/home/runner/work/skills-introduction-to-github/skills-introduction-to-github/PROFILE.md`.
+- This repository currently contains planning/docs content and GitHub Skills workflow files.
+- There is no Expo app scaffold in this repository yet (no `package.json`, `app.json`, or React Native source), so a native Expo build cannot run at this stage.
 
-Start here: https://github.com/Gayu1310/skills-introduction-to-github/issues/2
+## Next step to enable native Expo build
 
----
-
-&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+Initialize an Expo app in this repository first, then run native build commands.
