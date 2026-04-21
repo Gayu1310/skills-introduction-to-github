@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
+import { FILTERS, type Filter, RETRO_COLORS, RETRO_FONT_FAMILY } from './constants/ui';
 
 export default function App() {
-  const [activeFilter, setActiveFilter] = useState<'HOT' | 'NEW' | 'TOP'>('HOT');
+  const [activeFilter, setActiveFilter] = useState<Filter>('HOT');
 
   return (
     <View style={styles.container}>
@@ -18,7 +19,7 @@ export default function App() {
           <Text style={styles.screenLine}>▶ 8-bit SFX: ON</Text>
 
           <View style={styles.filterRow}>
-            {(['HOT', 'NEW', 'TOP'] as const).map((filter) => (
+            {FILTERS.map((filter) => (
               <Pressable
                 key={filter}
                 onPress={() => setActiveFilter(filter)}
@@ -67,36 +68,36 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c3a29',
+    backgroundColor: RETRO_COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
   },
   shell: {
     width: '92%',
     maxWidth: 420,
-    backgroundColor: '#4f654a',
-    borderColor: '#10170f',
+    backgroundColor: RETRO_COLORS.shell,
+    borderColor: RETRO_COLORS.shellBorder,
     borderWidth: 5,
     borderRadius: 22,
     padding: 20,
     gap: 14,
   },
   brand: {
-    color: '#d9e7bc',
+    color: RETRO_COLORS.brand,
     fontSize: 27,
     fontWeight: '900',
     letterSpacing: 2,
-    fontFamily: 'monospace',
+    fontFamily: RETRO_FONT_FAMILY,
   },
   subtitle: {
-    color: '#9fb38d',
-    fontFamily: 'monospace',
+    color: RETRO_COLORS.subtitle,
+    fontFamily: RETRO_FONT_FAMILY,
     fontSize: 12,
     marginTop: -6,
   },
   screen: {
-    backgroundColor: '#b9c99b',
-    borderColor: '#1f2a1d',
+    backgroundColor: RETRO_COLORS.screen,
+    borderColor: RETRO_COLORS.screenBorder,
     borderWidth: 4,
     borderRadius: 10,
     padding: 12,
@@ -104,16 +105,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   screenTitle: {
-    color: '#243325',
+    color: RETRO_COLORS.screenTitle,
     fontSize: 20,
     fontWeight: '800',
-    fontFamily: 'monospace',
+    fontFamily: RETRO_FONT_FAMILY,
     marginBottom: 8,
   },
   screenLine: {
-    color: '#2f4430',
+    color: RETRO_COLORS.screenText,
     fontSize: 14,
-    fontFamily: 'monospace',
+    fontFamily: RETRO_FONT_FAMILY,
     marginBottom: 4,
   },
   filterRow: {
@@ -123,22 +124,22 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     borderWidth: 2,
-    borderColor: '#253226',
-    backgroundColor: '#90a47b',
+    borderColor: RETRO_COLORS.filterBorder,
+    backgroundColor: RETRO_COLORS.filterBackground,
     paddingVertical: 5,
     paddingHorizontal: 10,
   },
   filterButtonActive: {
-    backgroundColor: '#253226',
+    backgroundColor: RETRO_COLORS.filterActiveBackground,
   },
   filterText: {
-    color: '#253226',
+    color: RETRO_COLORS.filterBorder,
     fontSize: 12,
     fontWeight: '800',
-    fontFamily: 'monospace',
+    fontFamily: RETRO_FONT_FAMILY,
   },
   filterTextActive: {
-    color: '#b9c99b',
+    color: RETRO_COLORS.filterActiveText,
   },
   controls: {
     flexDirection: 'row',
@@ -154,12 +155,12 @@ const styles = StyleSheet.create({
   pad: {
     width: 34,
     height: 34,
-    backgroundColor: '#1f2a1d',
+    backgroundColor: RETRO_COLORS.pad,
     position: 'absolute',
   },
   padTop: { top: 0, left: 39 },
   padLeft: { top: 39, left: 0 },
-  padCenter: { top: 39, left: 39, backgroundColor: '#172016' },
+  padCenter: { top: 39, left: 39, backgroundColor: RETRO_COLORS.padCenter },
   padRight: { top: 39, right: 0 },
   padBottom: { bottom: 0, left: 39 },
   actionButtons: {
@@ -171,15 +172,15 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#1e2b1d',
+    backgroundColor: RETRO_COLORS.actionButton,
     borderWidth: 3,
-    borderColor: '#111810',
+    borderColor: RETRO_COLORS.actionButtonBorder,
     alignItems: 'center',
     justifyContent: 'center',
   },
   actionText: {
-    color: '#d8e5bb',
-    fontFamily: 'monospace',
+    color: RETRO_COLORS.actionText,
+    fontFamily: RETRO_FONT_FAMILY,
     fontWeight: '900',
     fontSize: 18,
   },
