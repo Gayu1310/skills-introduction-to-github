@@ -9,14 +9,14 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.shell}>
-        <Text style={styles.brand}>GHOSTBOARD</Text>
-        <Text style={styles.subtitle}>8-BIT ANON HUB</Text>
+        <Text style={styles.brand}>999CHANZ</Text>
+        <Text style={styles.subtitle}>REDDIT DEPTH × 4CHAN ENERGY</Text>
 
         <View style={styles.screen}>
           <Text style={styles.screenTitle}>BOARD: /RETRO/</Text>
-          <Text style={styles.screenLine}>▶ Pixel art contests are live!</Text>
-          <Text style={styles.screenLine}>▶ Anonymous thread raids tonight</Text>
-          <Text style={styles.screenLine}>▶ 8-bit SFX: ON</Text>
+          <Text style={styles.screenLine}>▶ Post images, videos, memes anonymously</Text>
+          <Text style={styles.screenLine}>▶ Reddit-like ranking + 4chan-style boards</Text>
+          <Text style={styles.screenLine}>▶ Pixel SFX + retro animations: ON</Text>
 
           <View style={styles.filterRow}>
             {FILTERS.map((filter) => (
