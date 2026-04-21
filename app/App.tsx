@@ -1,67 +1,138 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import { useState } from 'react';
 import { FILTERS, type Filter, RETRO_COLORS, RETRO_FONT_FAMILY } from './constants/ui';
 
 export default function App() {
   const [activeFilter, setActiveFilter] = useState<Filter>('HOT');
+  const { width, height } = useWindowDimensions();
+  const isCompact = width < 390;
+  const isShort = height < 720;
+  const dPadSize = isCompact ? 92 : 112;
+  const actionButtonSize = isCompact ? 42 : 48;
+  const shellPadding = isCompact ? 14 : 20;
+  const shellGap = isCompact ? 10 : 14;
+  const shellRadius = isCompact ? 18 : 22;
+  const shellBorderWidth = isCompact ? 4 : 5;
+  const screenMinHeight = isShort ? 180 : 220;
+  const screenTitleSize = isCompact ? 18 : 20;
+  const screenTextSize = isCompact ? 13 : 14;
+  const brandSize = isCompact ? 22 : 27;
+  const subtitleSize = isCompact ? 11 : 12;
+  const subtitleMarginTop = isCompact ? -2 : -6;
+  const buttonHorizontalPadding = isCompact ? 8 : 10;
+  const buttonVerticalPadding = isCompact ? 4 : 5;
 
   return (
-    <View style={styles.container}>
-      <View style={styles.shell}>
-        <Text style={styles.brand}>999CHANZ</Text>
-        <Text style={styles.subtitle}>REDDIT DEPTH × 4CHAN ENERGY</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <View
+          style={[
+            styles.shell,
+            {
+              padding: shellPadding,
+              gap: shellGap,
+              borderRadius: shellRadius,
+              borderWidth: shellBorderWidth,
+            },
+          ]}
+        >
+          <Text style={[styles.brand, { fontSize: brandSize }]}>GHOSTBOARD</Text>
+          <Text style={[styles.subtitle, { fontSize: subtitleSize, marginTop: subtitleMarginTop }]}>
+            RETRO THREADS, MODERN CHAOS
+          </Text>
 
-        <View style={styles.screen}>
-          <Text style={styles.screenTitle}>BOARD: /RETRO/</Text>
-          <Text style={styles.screenLine}>▶ Post images, videos, memes anonymously</Text>
-          <Text style={styles.screenLine}>▶ Reddit-like ranking + 4chan-style boards</Text>
-          <Text style={styles.screenLine}>▶ Pixel SFX + retro animations: ON</Text>
+          <View style={[styles.screen, { minHeight: screenMinHeight }]}>
+            <Text style={[styles.screenTitle, { fontSize: screenTitleSize }]}>BOARD: /RETRO/</Text>
+            <Text style={[styles.screenLine, { fontSize: screenTextSize }]}>
+              ▶ Post images, videos, memes anonymously
+            </Text>
+            <Text style={[styles.screenLine, { fontSize: screenTextSize }]}>
+              ▶ Reddit-like ranking + 4chan-style boards
+            </Text>
+            <Text style={[styles.screenLine, { fontSize: screenTextSize }]}>
+              ▶ Pixel SFX + retro animations: ON
+            </Text>
 
-          <View style={styles.filterRow}>
-            {FILTERS.map((filter) => (
-              <Pressable
-                key={filter}
-                onPress={() => setActiveFilter(filter)}
-                style={[
-                  styles.filterButton,
-                  activeFilter === filter && styles.filterButtonActive,
-                ]}
-              >
-                <Text
+            <View style={styles.filterRow}>
+              {FILTERS.map((filter) => (
+                <Pressable
+                  key={filter}
+                  onPress={() => setActiveFilter(filter)}
                   style={[
-                    styles.filterText,
-                    activeFilter === filter && styles.filterTextActive,
+                    styles.filterButton,
+                    {
+                      paddingVertical: buttonVerticalPadding,
+                      paddingHorizontal: buttonHorizontalPadding,
+                    },
+                    activeFilter === filter && styles.filterButtonActive,
                   ]}
                 >
-                  {filter}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        </View>
-
-        <View style={styles.controls}>
-          <View style={styles.dpad}>
-            <View style={[styles.pad, styles.padTop]} />
-            <View style={[styles.pad, styles.padLeft]} />
-            <View style={[styles.pad, styles.padCenter]} />
-            <View style={[styles.pad, styles.padRight]} />
-            <View style={[styles.pad, styles.padBottom]} />
-          </View>
-
-          <View style={styles.actionButtons}>
-            <View style={styles.actionButton}>
-              <Text style={styles.actionText}>B</Text>
-            </View>
-            <View style={styles.actionButton}>
-              <Text style={styles.actionText}>A</Text>
+                  <Text
+                    style={[
+                      styles.filterText,
+                      { fontSize: isCompact ? 11 : 12 },
+                      activeFilter === filter && styles.filterTextActive,
+                    ]}
+                  >
+                    {filter}
+                  </Text>
+                </Pressable>
+              ))}
             </View>
           </View>
+
+          <View style={styles.controls}>
+            <View style={[styles.dpad, { width: dPadSize, height: dPadSize }]}>
+              <View style={[styles.pad, styles.padTop]} />
+              <View style={[styles.pad, styles.padLeft]} />
+              <View style={[styles.pad, styles.padCenter]} />
+              <View style={[styles.pad, styles.padRight]} />
+              <View style={[styles.pad, styles.padBottom]} />
+            </View>
+
+            <View style={styles.actionButtons}>
+              <View
+                style={[
+                  styles.actionButton,
+                  {
+                    width: actionButtonSize,
+                    height: actionButtonSize,
+                    borderRadius: actionButtonSize / 2,
+                  },
+                ]}
+              >
+                <Text style={styles.actionText}>B</Text>
+              </View>
+              <View
+                style={[
+                  styles.actionButton,
+                  {
+                    width: actionButtonSize,
+                    height: actionButtonSize,
+                    borderRadius: actionButtonSize / 2,
+                  },
+                ]}
+              >
+                <Text style={styles.actionText}>A</Text>
+              </View>
+            </View>
+          </View>
         </View>
-      </View>
+      </ScrollView>
       <StatusBar style="light" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -71,6 +142,13 @@ const styles = StyleSheet.create({
     backgroundColor: RETRO_COLORS.background,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 16,
   },
   shell: {
     width: '92%',
@@ -119,6 +197,7 @@ const styles = StyleSheet.create({
   },
   filterRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 8,
     marginTop: 12,
   },
@@ -126,8 +205,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: RETRO_COLORS.filterBorder,
     backgroundColor: RETRO_COLORS.filterBackground,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
   },
   filterButtonActive: {
     backgroundColor: RETRO_COLORS.filterActiveBackground,
@@ -145,6 +222,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    rowGap: 14,
     marginTop: 6,
   },
   dpad: {
@@ -153,25 +232,22 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   pad: {
-    width: 34,
-    height: 34,
+    width: '30.5%',
+    height: '30.5%',
     backgroundColor: RETRO_COLORS.pad,
     position: 'absolute',
   },
-  padTop: { top: 0, left: 39 },
-  padLeft: { top: 39, left: 0 },
-  padCenter: { top: 39, left: 39, backgroundColor: RETRO_COLORS.padCenter },
-  padRight: { top: 39, right: 0 },
-  padBottom: { bottom: 0, left: 39 },
+  padTop: { top: 0, left: '34.75%' },
+  padLeft: { top: '34.75%', left: 0 },
+  padCenter: { top: '34.75%', left: '34.75%', backgroundColor: RETRO_COLORS.padCenter },
+  padRight: { top: '34.75%', right: 0 },
+  padBottom: { bottom: 0, left: '34.75%' },
   actionButtons: {
     flexDirection: 'row',
     gap: 14,
-    marginRight: 4,
+    marginRight: 0,
   },
   actionButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
     backgroundColor: RETRO_COLORS.actionButton,
     borderWidth: 3,
     borderColor: RETRO_COLORS.actionButtonBorder,
